@@ -15,8 +15,8 @@ jobs:
       - checkout
       - run: export codehome=$PWD
       - run: cd /home/cirrus/sdks/flutter
-      - run: git remote set-url origin https://github.com/flutter/flutter
-      - run: flutter upgrade
+      - run: sudo git remote set-url origin https://github.com/flutter/flutter
+      - run: sudo flutter upgrade
       - run: cd $codehome && flutter build apk --target-platform android-arm64
 
 workflows:
