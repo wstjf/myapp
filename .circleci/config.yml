@@ -16,7 +16,7 @@ jobs:
       - run: export codehome=$PWD
       - run: cd /home/cirrus/sdks && rm -rf flutter
       - run: git clone --depth 1 https://github.com/flutter/flutter
-      - run: sudo export PATH=/home/cirrus/sdks/flutter/bin:$PATH && ls /home/cirrus/sdks/flutter/bin
+      - run: export PATH=/home/cirrus/sdks/flutter/bin:$PATH && ls /home/cirrus/sdks/flutter/bin
       - run: cd $codehome && flutter build apk --target-platform android-arm64
 
 workflows:
