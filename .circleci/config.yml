@@ -13,11 +13,10 @@ jobs:
     executor: android-flutter
     steps:
       - checkout
-      - run: sudo -i
       - run: export codehome=$PWD
-      - run: cd /home/cirrus/sdks/flutter
-      - run: git remote set-url origin https://github.com/flutter/flutter
-      - run: flutter upgrade
+      - run: cd /home/cirrus/sdks && rm -rf flutter
+      - run: git clone --depth 1 https://github.com/flutter/flutter
+      - run: flutter doctor
       - run: cd $codehome && flutter build apk --target-platform android-arm64
 
 workflows:
