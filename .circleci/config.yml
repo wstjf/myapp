@@ -13,6 +13,7 @@ jobs:
     executor: android-flutter
     steps:
       - checkout
+      - run: flutter upgrade
       - run: flutter build apk --target-platform android-arm64
 
 workflows:
