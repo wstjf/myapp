@@ -14,7 +14,7 @@ jobs:
       - checkout
 
       - flutter/install_sdk: 
-          version: 3.11.0-2.0.pre.53
+          version: 3.11.0
 
       - run:
           name: Build APK
