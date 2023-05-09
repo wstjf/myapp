@@ -3,14 +3,13 @@ version: 2.1
 orbs:
   android: circleci/android@2
   flutter: circleci/flutter@1.1.0
-executors:
-  android-flutter:
-    name: android/android-machine
-      resource-class: large
-      tag: 2022.09.1
+  
 jobs:
   deploy-android:
-    executor: android-flutter
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2022.09.1
     steps:
       - checkout
       - install_flutter
