@@ -20,8 +20,8 @@ jobs:
       - run:
           name: Build APK
           command: |
-            flutter build apk --target-platform android-arm64
+            flutter build apk --release --split-per-abi
             
 
       - store_artifacts:
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-*.apk
