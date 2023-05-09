@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   android: circleci/android@2
   flutter: circleci/flutter@1.1.0
-  
 jobs:
   deploy-android:
     executor:
