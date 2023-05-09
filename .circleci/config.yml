@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   android: circleci/android@2
-  flutter: circleci/flutter@1.1.0
 
 jobs:
   build:
@@ -13,8 +12,14 @@ jobs:
     steps:
       - checkout
 
-      - flutter/install_sdk: 
-          version: 3.10.0-1.5.pre
+      - run
+          name: install flutter
+          command: |
+            mkdir -p ~/development
+            curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/beta/linux/flutter_linux_3.10.0-1.5.pre-beta.tar.xz
+            tar xf flutter.tar.xz -C ~/development
+            rm -f flutter.tar.xz
+            echo 'export PATH=~/development/flutter/bin:$PATH' >> $BASH_ENV
 
       - run:
           name: Build APK
