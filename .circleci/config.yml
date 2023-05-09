@@ -19,6 +19,7 @@ jobs:
       - run:
           name: Build APK
           command: |
+            flutter upgrade
             flutter build apk --target-platform android-arm64
             
 
