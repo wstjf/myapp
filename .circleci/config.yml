@@ -10,6 +10,7 @@ jobs:
       - checkout
       - install_flutter
       - build
+      
       - store_artifacts:
         path: build/output/apk
 
