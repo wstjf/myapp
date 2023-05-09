@@ -16,14 +16,6 @@ jobs:
       - flutter/install_sdk: 
           version: 3.7.12
 
-      - flutter/install_pub:
-          cache-version: v1
-
-      - run:
-          name: Flutter pub get
-          command: |
-            flutter pub get
-
       - run:
           name: Build APK
           command: |
