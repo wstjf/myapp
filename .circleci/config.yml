@@ -10,6 +10,9 @@ jobs:
       - checkout
       - install_flutter
       - build
+      
+      - store_artifacts:
+          path: build/app/outputs/flutter-apk/app-release.apk
 
 commands:
   build:
@@ -48,6 +51,3 @@ workflows:
               only:
                 - master
       
-      
-      - store_artifacts:
-          path: build/app/outputs/flutter-apk/app-release.apk
