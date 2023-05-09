@@ -18,8 +18,10 @@ commands:
       - run:
           name: Build apk
           command: fvm flutter build apk --target-platform android-arm64
-      - store_artifacts:
-        path: build/output/apk
+      - run:
+          name: Upload artifacts
+          store_artifacts:
+            path: build/output/apk
   install_flutter:
     description: Install Flutter by FVM
     steps:
