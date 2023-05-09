@@ -1,35 +1,61 @@
-# Material 3 Demo
+# Bili You
 
-This sample Flutter app showcases Material 3 features in the Flutter Material library. These features include updated components, typography, color system and elevation support. The app supports light and dark themes, different color palettes, as well as the ability to switch between Material 2 and Material 3. For more information about Material 3, the guidance is now live at https://m3.material.io/.
+<div align=center>
+<img src="./assets/icon/bili.png" width = "250" alt="" align=center />
 
-This app also includes new M3 components such as IconButtons, Chips, TextFields, Switches, Checkboxes, Radio buttons and ProgressIndicators. 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/lucinhu/bili_you/main.yml?color=%238BC34A&style=for-the-badge)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/lucinhu/bili_you?include_prereleases&style=for-the-badge)](https://github.com/lucinhu/bili_you/releases)
+[![GitHub all releases](https://img.shields.io/github/downloads/lucinhu/bili_you/total?color=%234CAF50&style=for-the-badge)](https://github.com/lucinhu/bili_you/releases)
+![GitHub Repo stars](https://img.shields.io/github/stars/lucinhu/bili_you?color=%23FFC107&style=for-the-badge)
 
-# Preview
+</div>
 
-<img width="400" alt="Screen Shot 2022-08-12 at 12 00 28 PM" src="https://user-images.githubusercontent.com/36861262/184426137-47b550e1-5c6e-4bb7-b647-b1741f96d42b.png"><img width="400" alt="Screen Shot 2022-08-12 at 12 00 38 PM" src="https://user-images.githubusercontent.com/36861262/184426154-063a39e8-24bd-40be-90cd-984bf81c0fdf.png">
+一个用flutter制作的第三方B站客户端.
 
+## 功能实现
 
-# Features
-## Icon Buttons on the Top App Bar
-<img src="https://user-images.githubusercontent.com/36861262/166506048-125caeb3-5d5c-4489-9029-1cb74202dd37.png" width="25"/>  Users can switch between a light or dark theme with this button.
+- [x] 主页视频推荐
+- [x] 视频搜索
+- [x] 评论区
+- [x] 评论区楼中楼
+- [x] 评论图片及笔记
+- [x] 相关视频
+- [x] 热搜
+- [x] 视频播放
+- [x] 弹幕
+- [ ] 直播
+- [x] 动态(未完善)
+- [x] 用户投稿
+- [x] 番剧搜索
+- [x] 番剧播放
 
-<img src="https://user-images.githubusercontent.com/36861262/166508002-90fce980-d228-4312-a95f-a1919bb79ccc.png" width="25" />  Users can switch between Material 2 and Material 3 for the displayed components with this button.
+## 截图
 
-<img src="https://user-images.githubusercontent.com/36861262/166511137-85dea8df-0017-4649-b913-14d4b7a17c2f.png" width="25" /> This button will bring up a pop-up menu that allows the user to change the base color used for the light and dark themes. This uses a new color seed feature to generate entire color schemes from a single color.
+<div align=center>
+<img src="assets/screenshot/v1.0.3/main_page.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/user_info.png" width = "200"  />
+<img src="assets/screenshot/v1.0.3/search_page.png" width = "200"  />
+<img src="assets/screenshot/v1.0.3/video_search.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/bangumi_search.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/video_play.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/bangumi_play.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/reply.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/reply_reply.png" width = "200" />
+<img src="assets/screenshot/v1.0.3/about_page.png" width = "200" />
+</div>
 
-## Component Screen
-The default screen displays all the updated components in Material 3: AppBar, common Buttons, Floating Action Button(FAB), Chips, Card, Checkbox, Dialog, NavigationBar, NavigationRail, ProgressIndicators, Radio buttons, TextFields and Switch.
+## 交流
 
-### Adaptive Layout
-Based on the fact that NavigationRail is not recommended on a small screen, the app changes its layout based on the screen width. If it's played on iOS or Android devices which have a narrow screen, a Navigation Bar will show at the bottom and will be used to navigate. But if it's played as a desktop or a web app, a Navigation Rail will show on the left side and at the same time, a Navigation Bar will show as an example but will not have any functionality.
+Discord：[https://discord.gg/tsFh7Hdb4s](https://discord.gg/tsFh7Hdb4s)  
 
-Users can see both layouts on one device by running a desktop app and adjusting the screen width.
+## 声明
 
-## Color Screen
-With Material 3, we have added support for generating a full color scheme from a single seed color. The Color Screen shows users all of the colors in light and dark color palettes that are generated from the currently selected color.
+- 此项目是个人为了兴趣而开发, 仅供学习交流使用, 无任何商业用途.  
+- 资源版权仍归原网站或其作者所有.  
+- 所用API皆从官方网站收集, 不含任何非法及破解内容.  
 
-## Typography Screen
-The Typography Screen displays the text styles used in for the default TextTheme.
+## 感谢
 
-## Elevation Screen
-The Elevation screen shows different ways of elevation with a new supported feature "surfaceTintColor" in the Material library.
+- [bilibili-API-collect](https://github.com/SocialSisterYi/bilibili-API-collect): 哔哩哔哩API收集，感谢@SocialSisterYi及各位贡献者的维护！  
+- [flutter_ns_danmaku](https://github.com/xiaoyaocz/flutter_ns_danmaku): @xiaoyaocz大佬制作的flutter弹幕插件，非常感谢!  
+- [media_kit](https://github.com/alexmercerind/media_kit): 感谢@alexmercerind大佬制作的media_kit播放器!  
