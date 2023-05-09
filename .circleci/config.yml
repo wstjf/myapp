@@ -5,8 +5,6 @@ jobs:
   deploy-android:
     executor:
       name: android/android-machine
-      resource-class: large
-      tag: 2022.09.1
     steps:
       - checkout
       - install_flutter
@@ -21,11 +19,6 @@ commands:
           command: fvm flutter build apk --target-platform android-arm64
   install_flutter:
     description: Install Flutter by FVM
-    parameters:
-      os:
-        type: enum
-        default: "linux"
-        enum: ["linux", "macos", "windows"]
     steps:
       - run:
           name: Set env vars
@@ -36,9 +29,9 @@ commands:
       - run:
           name: Install FVM
           command: |
-            curl -O -L https://github.com/fluttertools/fvm/releases/download/"$FVM_VERSION"/fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
-            tar -xf fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
-            rm fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
+            curl -O -L https://github.com/fluttertools/fvm/releases/download/"$FVM_VERSION"/fvm-"$FVM_VERSION"-linux-x64.tar.gz
+            tar -xf fvm-"$FVM_VERSION"-linux-x64.tar.gz
+            rm fvm-"$FVM_VERSION"-linux-x64.tar.gz
       - run:
           name: Install Flutter
           command: fvm install
@@ -50,4 +43,3 @@ workflows:
             branches:
               only:
                 - master
-                - develop
