@@ -1,53 +1,26 @@
 version: 2.1
+
 orbs:
   android: circleci/android@2
+  flutter: circleci/flutter@1.1.0
+
 jobs:
-  deploy-android:
+  build:
     executor:
       name: android/android-machine
       tag: 2022.09.1
+    
     steps:
       - checkout
-      - install_flutter
-      - build
-      
+
+      - flutter/install_sdk: 
+          version: 3.11.0-2.0.pre.53
+
+      - run:
+          name: Build APK
+          command: |
+            flutter build apk --target-platform android-arm64
+            
+
       - store_artifacts:
           path: build/app/outputs/flutter-apk/app-release.apk
-
-commands:
-  build:
-    description: Build generated files
-    steps:
-      - run:
-          name: Build apk
-          command: fvm flutter build apk --target-platform android-arm64
-      - run:
-          name: Upload artifacts
-          command: ./upload.sh build/app/outputs/flutter-apk/app-release.apk
-  install_flutter:
-    description: Install Flutter by FVM
-    steps:
-      - run:
-          name: Set env vars
-          command: |
-            echo 'export PATH="$CIRCLE_WORKING_DIRECTORY"/fvm:"$CIRCLE_WORKING_DIRECTORY"/.pub-cache/bin:"$CIRCLE_WORKING_DIRECTORY"/fvm/default/bin:"$PATH"' >> $BASH_ENV
-            echo 'export FVM_HOME="$CIRCLE_WORKING_DIRECTORY"/fvm/versions/' >> $BASH_ENV
-            echo 'export FVM_VERSION=2.4.1' >> $BASH_ENV
-      - run:
-          name: Install FVM
-          command: |
-            curl -O -L https://github.com/fluttertools/fvm/releases/download/"$FVM_VERSION"/fvm-"$FVM_VERSION"-linux-x64.tar.gz
-            tar -xf fvm-"$FVM_VERSION"-linux-x64.tar.gz
-            rm fvm-"$FVM_VERSION"-linux-x64.tar.gz
-      - run:
-          name: Install Flutter
-          command: fvm install 3.7.12 && fvm global 3.7.12
-workflows:
-  deploy:
-    jobs:
-      - deploy-android:
-          filters:
-            branches:
-              only:
-                - master
-      
