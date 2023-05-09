@@ -1,28 +1,58 @@
 version: 2.1
 
+orbs:
+  android: circleci/android@2
+  flutter: circleci/flutter@1.1.0
 executors:
   android-flutter:
-    docker:
-      - image: gmemstr/flutter-fastlane:latest
-    environment:
-      TERM: dumb
-      _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
-      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m"'
+    name: android/android-machine
+      resource-class: large
+      tag: 2022.09.1
 jobs:
-  beta_deploy:
+  deploy-android:
     executor: android-flutter
     steps:
       - checkout
-      - run: export codehome=$PWD
-      - run: cd /home/cirrus/sdks && rm -rf flutter
-      - run: git clone --depth 1 https://github.com/flutter/flutter && chmod -R 755 flutter
-      - run: export PATH=$PWD/flutter/bin:$PATH && flutter doctor
-      - run: cd $codehome && flutter build apk --target-platform android-arm64
+      - install_flutter
+      - build
+      - run: ls build/
+      
+  commands:
+  build:
+    description: Build generated files
+    steps:
+      - run:
+          name: Build Apk
+          command: fvm flutter build apk --target-platform android-arm64
+
+  install_flutter:
+    description: Install Flutter by FVM
+    parameters:
+      os:
+        type: enum
+        default: "linux"
+        enum: ["linux", "macos", "windows"]
+    steps:
+      - run:
+          name: Set env vars
+          command: |
+            echo 'export PATH="$CIRCLE_WORKING_DIRECTORY"/fvm:"$CIRCLE_WORKING_DIRECTORY"/.pub-cache/bin:"$CIRCLE_WORKING_DIRECTORY"/fvm/default/bin:"$PATH"' >> $BASH_ENV
+            echo 'export FVM_HOME="$CIRCLE_WORKING_DIRECTORY"/fvm/versions/' >> $BASH_ENV
+            echo 'export FVM_VERSION=2.4.1' >> $BASH_ENV
+      - run:
+          name: Install FVM
+          command: |
+            curl -O -L https://github.com/fluttertools/fvm/releases/download/"$FVM_VERSION"/fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
+            tar -xf fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
+            rm fvm-"$FVM_VERSION"-<< parameters.os >>-x64.tar.gz
+      - run:
+          name: Install Flutter
+          command: fvm install
 
 workflows:
   deploy:
     jobs:
-      - beta_deploy:
+      - deploy-android:
           filters:
             branches:
               only: master
