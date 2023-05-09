@@ -5,6 +5,7 @@ jobs:
   deploy-android:
     executor:
       name: android/android-machine
+      tag: 2022.09.1
     steps:
       - checkout
       - install_flutter
