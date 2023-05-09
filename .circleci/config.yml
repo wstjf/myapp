@@ -17,7 +17,7 @@ commands:
     steps:
       - run:
           name: Build apk
-          command: fvm flutter --help
+          command: fvm flutter --verbose
   install_flutter:
     description: Install Flutter by FVM
     steps:
