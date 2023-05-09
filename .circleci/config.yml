@@ -17,7 +17,7 @@ commands:
     steps:
       - run:
           name: Build apk
-          command: flutter build apk --target-platform android-arm64
+          command: fvm flutter --help
   install_flutter:
     description: Install Flutter by FVM
     steps:
