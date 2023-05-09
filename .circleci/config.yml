@@ -1,8 +1,6 @@
 version: 2.1
-
 orbs:
   android: circleci/android@2
-  flutter: circleci/flutter@1.1.0
 jobs:
   deploy-android:
     executor:
@@ -13,16 +11,14 @@ jobs:
       - checkout
       - install_flutter
       - build
-      - run: ls build/
-      
-  commands:
+
+commands:
   build:
     description: Build generated files
     steps:
       - run:
-          name: Build Apk
+          name: Build apk
           command: fvm flutter build apk --target-platform android-arm64
-
   install_flutter:
     description: Install Flutter by FVM
     parameters:
@@ -46,11 +42,12 @@ jobs:
       - run:
           name: Install Flutter
           command: fvm install
-
 workflows:
   deploy:
     jobs:
       - deploy-android:
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - develop
