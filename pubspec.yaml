@@ -18,8 +18,6 @@ dependencies:
   url_launcher: ^6.1.8
 
 dev_dependencies:
-  analysis_defaults:
-    path: ../analysis_defaults
   flutter_test:
     sdk: flutter
   integration_test:
