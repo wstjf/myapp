@@ -1,12 +1,12 @@
 orbs:
-  android: circleci/android@1.0.3
+  android: circleci/android@2
   flutter: circleci/flutter@1.1.0
 
 jobs:
   build:
     executor:
       name: android/android-machine
-      resource-class: medium
+      tag: 2022.09.1
     
     steps:
       - checkout
